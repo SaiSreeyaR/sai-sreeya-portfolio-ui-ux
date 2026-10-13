@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f7f5f0">
+<title>Sai Sreeya Ramasahayam — Portfolio</title>
+<style>
+:root { color-scheme: light dark; --paper: light-dark(#f7f5f0,#171917); --surface: light-dark(#fffefa,#202420); --ink: light-dark(#202923,#f1f2eb); --muted: light-dark(#68736b,#aab2a9); --line: light-dark(#dce1d8,#39413a); --green: light-dark(#315c4b,#a5d3b5); --lime: light-dark(#d9edb9,#3b573e); --peach: light-dark(#f3d9c9,#553d34); }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+a { color: inherit; }
+button, a { -webkit-tap-highlight-color: transparent; }
+.site { min-height: 100vh; width: 100%; background-color: var(--paper); color: var(--ink); }
+.wrap { width: min(1120px, calc(100% - 48px)); margin: 0 auto; }
+nav { display:flex; justify-content:space-between; align-items:center; padding:24px 0; border-bottom:1px solid var(--line); }
+.brand { font-size:14px; font-weight:750; letter-spacing:-.03em; text-decoration:none; }
+.navlinks { display:flex; gap:27px; align-items:center; }
+.navlinks a { text-decoration:none; font-size:12px; color:var(--muted); }
+.navlinks a:hover, .text-link:hover { color:var(--green); }
+.pill { border:1px solid var(--line); padding:10px 15px; border-radius:30px; color:var(--ink)!important; }
+.hero { display:grid; grid-template-columns: 1.1fr .9fr; gap:70px; align-items:center; padding:90px 0 86px; }
+.eyebrow { text-transform:uppercase; letter-spacing:.16em; font-size:10px; font-weight:800; color:var(--green); }
+h1 { font-size:clamp(48px,7vw,82px); line-height:.99; letter-spacing:-.075em; font-weight:650; margin:21px 0 25px; max-width:650px; }
+h1 em { font-family: Georgia, serif; font-weight:400; }
+.hero p { max-width:510px; color:var(--muted); line-height:1.8; font-size:15px; }
+.actions { display:flex; gap:12px; flex-wrap:wrap; margin-top:29px; }
+.btn { display:inline-flex; align-items:center; gap:10px; border-radius:99px; padding:13px 18px; text-decoration:none; font-size:12px; font-weight:700; border:1px solid var(--line); transition:transform .2s, background .2s; }
+.btn:hover { transform:translateY(-2px); }
+.btn.primary { background:var(--green); color:light-dark(#fff,#17261c); border-color:var(--green); }
+.hero-art { position:relative; min-height:385px; border-radius:190px 190px 18px 18px; background:var(--lime); overflow:hidden; display:flex; align-items:center; justify-content:center; }
+.sun { width:190px; height:190px; border-radius:50%; background:var(--peach); position:absolute; top:44px; right:43px; }
+.orbit { position:absolute; width:270px; height:270px; border:1px solid light-dark(#78936d,#809d7b); border-radius:50%; transform:rotate(-24deg) scaleX(1.3); }
+.orbit.two { width:340px; height:340px; transform:rotate(34deg) scaleX(1.1); }
+.art-note { position:absolute; left:25px; bottom:25px; padding:15px 17px; border-radius:14px; background:var(--surface); max-width:205px; box-shadow:0 12px 35px #0000000d; }
+.art-note small { display:block; color:var(--muted); font-size:10px; margin-bottom:6px; }
+.art-note strong { font-family:Georgia,serif; font-size:19px; font-weight:500; }
+.art-label { position:absolute; top:25px; left:25px; font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:light-dark(#35503b,#203427); }
+.meta-strip { display:grid; grid-template-columns:repeat(3,1fr); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+.meta { padding:21px 0; }
+.meta + .meta { border-left:1px solid var(--line); padding-left:25px; }
+.meta span { display:block; color:var(--muted); font-size:10px; text-transform:uppercase; letter-spacing:.13em; margin-bottom:8px; }
+.meta strong { font-size:13px; font-weight:650; }
+section { padding:83px 0; }
+.section-head { display:flex; align-items:end; justify-content:space-between; gap:25px; margin-bottom:35px; }
+.section-head h2 { font-size:clamp(31px,4vw,45px); line-height:1.05; letter-spacing:-.06em; font-weight:600; margin:12px 0 0; }
+.section-head p { max-width:370px; color:var(--muted); line-height:1.7; font-size:13px; margin:0; }
+.feature { background:var(--surface); border:1px solid var(--line); border-radius:22px; overflow:hidden; }
+.feature-top { display:grid; grid-template-columns:1fr 1fr; gap:35px; padding:38px; align-items:center; }
+.feature h3 { font-size:32px; letter-spacing:-.05em; line-height:1.1; margin:13px 0; }
+.feature p { color:var(--muted); line-height:1.8; font-size:13px; }
+.tags { display:flex; gap:8px; flex-wrap:wrap; margin:20px 0 23px; }
+.tag { border:1px solid var(--line); padding:7px 10px; border-radius:30px; font-size:10px; color:var(--muted); }
+.mockup { min-height:290px; background:#e9eee4; border-radius:16px; padding:24px; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; color:#283c30; }
+.phone { width:154px; height:248px; border:5px solid #2e4335; border-radius:24px; background:#fbfaf5; padding:20px 12px 12px; box-shadow:12px 16px 0 #cbd7c6; transform:rotate(-5deg); position:relative; z-index:1; }
+.phone + .phone { transform:rotate(7deg) translate(20px,15px); background:#f5e8dc; box-shadow:12px 16px 0 #d9c8b8; }
+.phone-notch { width:38px; height:5px; border-radius:5px; background:#2e4335; margin:-12px auto 15px; }
+.phone .tiny { font-size:7px; color:#758176; }
+.phone h4 { font-family:Georgia,serif; font-size:16px; line-height:1.05; margin:7px 0 10px; font-weight:500; }
+.moodrow { display:flex; gap:5px; margin:10px 0; }
+.mood { width:21px; height:21px; border-radius:50%; background:#d8e6cd; }
+.mood:nth-child(2) { background:#e9c7ae; }
+.mood:nth-child(3) { background:#e6dba1; }
+.mood:nth-child(4) { background:#c9d9d8; }
+.music-card { background:#e1ead8; border-radius:8px; padding:9px; margin-top:9px; font-size:7px; }
+.music-card b { display:block; font-size:9px; margin-bottom:4px; }
+.feature-bottom { border-top:1px solid var(--line); display:grid; grid-template-columns:repeat(3,1fr); }
+.feature-stat { padding:22px 28px; }
+.feature-stat + .feature-stat { border-left:1px solid var(--line); }
+.feature-stat b { display:block; font-size:12px; margin-bottom:6px; }
+.feature-stat span { font-size:11px; line-height:1.6; color:var(--muted); }
+.process { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+.process-card { border:1px solid var(--line); border-radius:17px; padding:24px; min-height:190px; }
+.number { color:var(--green); font-size:11px; font-weight:800; letter-spacing:.1em; }
+.process-card h3 { font-size:17px; letter-spacing:-.03em; margin:22px 0 9px; }
+.process-card p { color:var(--muted); font-size:12px; line-height:1.75; margin:0; }
+.principles { display:grid; grid-template-columns:.8fr 1.2fr; gap:60px; align-items:start; }
+.principles h2 { font-size:clamp(34px,4vw,48px); line-height:1.05; letter-spacing:-.06em; font-weight:600; margin:13px 0; }
+.principles .intro { color:var(--muted); font-size:13px; line-height:1.8; }
+.principle-list { border-top:1px solid var(--line); }
+.principle { display:grid; grid-template-columns:35px 1fr; gap:16px; padding:19px 0; border-bottom:1px solid var(--line); }
+.principle .symbol { width:30px; height:30px; display:grid; place-items:center; background:var(--lime); border-radius:50%; color:light-dark(#315c4b,#edf6e4); font-size:13px; }
+.principle h3 { font-size:13px; margin:2px 0 6px; }
+.principle p { color:var(--muted); font-size:12px; line-height:1.7; margin:0; }
+.reflection { background:var(--lime); border-radius:22px; padding:40px; display:grid; grid-template-columns:.7fr 1.3fr; gap:40px; color:light-dark(#253a2c,#eff5e8); }
+.reflection h2 { font-family:Georgia,serif; font-size:34px; font-weight:400; line-height:1.1; margin:12px 0; letter-spacing:-.04em; }
+.reflection p { font-size:13px; line-height:1.85; margin:0; }
+.reflection .eyebrow { color:inherit; opacity:.7; }
+.cta { display:flex; justify-content:space-between; align-items:center; gap:30px; padding:40px; border:1px solid var(--line); border-radius:22px; }
+.cta h2 { font-size:clamp(28px,4vw,42px); letter-spacing:-.06em; margin:0 0 10px; }
+.cta p { color:var(--muted); font-size:13px; margin:0; }
+footer { padding:25px 0 35px; border-top:1px solid var(--line); display:flex; justify-content:space-between; gap:20px; color:var(--muted); font-size:11px; }
+.text-link { font-size:12px; font-weight:700; text-decoration:none; }
+@media (max-width:760px) { .wrap { width:calc(100% - 34px); } .navlinks { gap:14px; } .navlinks a:not(.pill) { display:none; } .hero { grid-template-columns:1fr; gap:38px; padding:60px 0; } .hero-art { min-height:310px; } .sun { width:155px; height:155px; } .meta-strip { grid-template-columns:1fr; } .meta { padding:16px 0; } .meta + .meta { border-left:0; border-top:1px solid var(--line); padding-left:0; } section { padding:60px 0; } .section-head { align-items:start; flex-direction:column; } .feature-top { grid-template-columns:1fr; padding:23px; gap:25px; } .mockup { min-height:270px; } .feature-bottom { grid-template-columns:1fr; } .feature-stat + .feature-stat { border-left:0; border-top:1px solid var(--line); } .process { grid-template-columns:1fr; } .process-card { min-height:0; } .principles { grid-template-columns:1fr; gap:25px; } .reflection { grid-template-columns:1fr; padding:28px; gap:18px; } .cta { flex-direction:column; align-items:flex-start; padding:28px; } footer { flex-direction:column; } }
+</style>
+</head>
+<body>
+<div class="site">
+  <div class="wrap">
+    <nav aria-label="Main navigation">
+      <a class="brand" href="#home">SAI SREEYA RAMASAHAYAM<span style="color:var(--green)">.</span></a>
+      <div class="navlinks"><a href="#work">Selected work</a><a href="#approach">My approach</a><a class="pill" href="#contact">Get in touch ↗</a></div>
+    </nav>
+    <main>
+      <section class="hero" id="home" style="padding-top:72px">
+        <div>
+          <div class="eyebrow">Portfolio · UX/UI · AI & Analytics</div>
+          <h1>Thoughtful digital experiences, <em>designed around people.</em></h1>
+          <p>I’m Sai Sreeya, an AI & Analytics professional with an interest in user-centered design. I bring structured thinking, curiosity, and empathy together to make digital products feel clearer, more useful, and more human.</p>
+          <div class="actions"><a class="btn primary" href="#work">Explore my work <span>↘</span></a><a class="btn" href="#approach">How I think <span>↗</span></a></div>
+        </div>
+        <div class="hero-art" aria-label="Abstract organic shapes representing calm and creativity">
+          <div class="art-label">Curiosity meets empathy</div><div class="sun"></div><div class="orbit"></div><div class="orbit two"></div>
+          <div class="art-note"><small>DESIGN PHILOSOPHY</small><strong>Make space for the human.</strong></div>
+        </div>
+      </section>
+      <div class="meta-strip" aria-label="Portfolio focus">
+        <div class="meta"><span>Focus</span><strong>UX/UI · Product thinking</strong></div>
+        <div class="meta"><span>Approach</span><strong>Research · Iterate · Refine</strong></div>
+        <div class="meta"><span>Featured case study</span><strong>Mindful Melodies</strong></div>
+      </div>
+      <section id="work">
+        <div class="section-head"><div><div class="eyebrow">01 / Selected work</div><h2>Designing for a<br>more mindful moment.</h2></div><p>An academic UX/UI concept exploring how music, mood check-ins, and mindfulness can work together in a supportive, approachable experience.</p></div>
+        <article class="feature">
+          <div class="feature-top">
+            <div><div class="eyebrow">User-centric design · Academic project</div><h3>Mindful<br>Melodies</h3><p>A mental wellness app concept that connects how you feel with music and mindfulness practices. The design journey moved from low-fidelity wireframes to a more expressive high-fidelity prototype, with attention to navigation, accessibility, and personalization.</p>
+              <div class="tags"><span class="tag">Figma</span><span class="tag">Wireframing</span><span class="tag">Prototyping</span><span class="tag">Accessibility</span><span class="tag">User-centered design</span></div>
+              <div class="actions"><a class="btn primary" href="https://www.figma.com/proto/kqmz6xIXYJVSWh7Fs6xSMP/High-Fidelity?node-id=0-1&t=P4m618L9g5hUdHkA-1" target="_blank" rel="noopener noreferrer">View high-fidelity prototype ↗</a><a class="btn" href="https://www.figma.com/design/pr6iQGcQv4VEUoGJPFHYM4/Mindful-Melodies-Low-Fidelity-(Copy)-(Copy)?t=I8RQ53qRfTUYceD5-1" target="_blank" rel="noopener noreferrer">Explore wireframes ↗</a></div>
+            </div>
+            <div class="mockup" aria-label="Illustrative mockups of a mood tracking and music recommendation app"><div class="phone"><div class="phone-notch"></div><div class="tiny">GOOD EVENING</div><h4>How are you<br>feeling today?</h4><div class="moodrow"><i class="mood"></i><i class="mood"></i><i class="mood"></i><i class="mood"></i></div><div class="tiny">Choose your mood</div><div class="music-card"><b>A moment for you</b>Mindful breathing · 3 min</div><div class="music-card"><b>Your sound today</b>Calm acoustic mix</div></div><div class="phone"><div class="phone-notch"></div><div class="tiny">YOUR DAILY RESET</div><h4>Find your<br>own rhythm.</h4><div style="height:58px;border-radius:8px;background:#d3dfca;display:grid;place-items:center;font-size:23px">♫</div><div class="music-card"><b>Soft focus</b>Music for a gentler moment</div><div class="music-card"><b>Take a breath</b>Guided audio · 5 min</div></div></div>
+          </div>
+          <div class="feature-bottom"><div class="feature-stat"><b>01 · Understand</b><span>Establish core user flows and the structure of the experience.</span></div><div class="feature-stat"><b>02 · Refine</b><span>Develop visual hierarchy, consistent styling, and clearer interactions.</span></div><div class="feature-stat"><b>03 · Include</b><span>Consider readable typography, text-size flexibility, and voice-friendly interactions.</span></div></div>
+        </article>
+      </section>
+      <section id="approach" style="padding-top:10px">
+        <div class="section-head"><div><div class="eyebrow">02 / The process</div><h2>From structure<br>to feeling.</h2></div><p>The goal was not simply to make the screens look polished. It was to make the experience easier to understand, more personal, and welcoming to a wider range of users.</p></div>
+        <div class="process">
+          <article class="process-card"><div class="number">PHASE 01</div><h3>Map the essentials</h3><p>Low-fidelity wireframes helped establish the main screens and journeys, including mood tracking, music recommendations, and mindfulness exercises.</p></article>
+          <article class="process-card"><div class="number">PHASE 02</div><h3>Build the visual language</h3><p>The high-fidelity direction introduced a cohesive palette, typography, iconography, and stronger information hierarchy to make the product feel more complete.</p></article>
+          <article class="process-card"><div class="number">PHASE 03</div><h3>Design with inclusion in mind</h3><p>Accessibility considerations informed readable text, customizable text sizes, voice-to-text and voice-command concepts, and guided audio experiences.</p></article>
+        </div>
+      </section>
+      <section style="padding-top:15px">
+        <div class="principles">
+          <div><div class="eyebrow">03 / Design principles</div><h2>Small details.<br>More thoughtful<br>experiences.</h2><p class="intro">For a product connected to emotional well-being, the interface should feel supportive rather than demanding. These principles guided the design direction.</p></div>
+          <div class="principle-list">
+            <article class="principle"><div class="symbol">♡</div><div><h3>Lead with empathy</h3><p>Make mood check-ins feel simple and non-judgmental, giving people an approachable way to reflect on how they feel.</p></div></article>
+            <article class="principle"><div class="symbol">↗</div><div><h3>Keep navigation clear</h3><p>Give key actions—checking in, finding music, and starting an exercise—a clear place in the experience.</p></div></article>
+            <article class="principle"><div class="symbol">◌</div><div><h3>Make it personal</h3><p>Connect mood input with relevant music and mindfulness options so the experience feels tailored to the moment.</p></div></article>
+            <article class="principle"><div class="symbol">Aa</div><div><h3>Design for access</h3><p>Consider legible typography, flexible text sizing, and audio or voice-based ways to engage with the app.</p></div></article>
+          </div>
+        </div>
+      </section>
+      <section style="padding-top:0">
+        <div class="reflection"><div><div class="eyebrow">04 / Reflection</div><h2>Good design is an ongoing conversation.</h2></div><p>Moving from wireframes to a high-fidelity prototype reinforced the value of iteration: early structure creates a foundation, while thoughtful refinement helps the experience communicate more clearly. Mindful Melodies brought together visual consistency, interaction design, and accessibility considerations around one central idea—make it easier for people to find a moment of calm. The project also strengthened my interest in the space where technology, human behavior, and meaningful product experiences meet.</p></div>
+      </section>
+      <section id="contact" style="padding-top:10px">
+        <div class="cta"><div><div class="eyebrow" style="margin-bottom:13px">Have a project in mind?</div><h2>Let’s make something meaningful.</h2><p>Open to conversations about UX/UI, product experiences, AI, and analytics.</p></div><a class="btn primary" href="mailto:YOUR_EMAIL@example.com?subject=Let's%20connect">Email me ↗</a></div>
+      </section>
+    </main>
+    <footer><span>© 2026 Sai Sreeya Ramasahayam</span><span>Designed with curiosity and care.</span><a class="text-link" href="#home">Back to top ↑</a></footer>
+  </div>
+</div>
+</body>
+</html>
